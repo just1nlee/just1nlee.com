@@ -1,3 +1,9 @@
+:root {
+  --color-bg: #101010;
+  --color-text: #ffffff;
+  --color-secondary-text: #b5b5b5;
+}
+
 nav ul,
 footer ul {
   display: flex;
@@ -7,6 +13,9 @@ footer ul {
 }
 
 body {
+  background-color: var(--color-bg);
+  color: var(--color-secondary-text);
+
   font-family: "Geist", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -18,5 +27,6 @@ body {
 }
 
 h1 {
-  font-weight: 700;
+  color: var(--color-text);
+  font-weight: 600;
 }
