@@ -7,7 +7,16 @@ footer ul {
 }
 
 body {
+  font-family: "Geist", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+
   max-width: 650px;
   margin: 0 auto;
   padding: 0 1rem;
+}
+
+h1 {
+  font-weight: 700;
 }
