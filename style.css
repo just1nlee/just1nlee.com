@@ -28,5 +28,18 @@ body {
 
 h1 {
   color: var(--color-text);
-  font-weight: 600;
+  font-weight: 500;
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--color-text);
+}
+
+a:hover {
+  text-decoration: underline;
 }
