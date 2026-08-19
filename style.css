@@ -26,8 +26,16 @@ body {
   padding: 0 1rem;
 }
 
-h1 {
+nav,
+header,
+main,
+footer {
+  margin-top: 4rem;
+}
+
+header h1 {
   color: var(--color-text);
+  font-size: 1.5rem;
   font-weight: 500;
 }
 
