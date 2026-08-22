@@ -5,7 +5,17 @@
   --color-tertiary-text: #5c5c64;
 }
 
-nav ul,
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+#name {
+  flex-grow: 1;
+}
+
 footer ul {
   display: flex;
   gap: 1.5rem;
@@ -22,7 +32,7 @@ body {
   font-weight: 400;
   font-style: normal;
 
-  max-width: 700px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 0 1rem;
   display: flex;
@@ -56,6 +66,15 @@ header div {
 footer {
   display: flex;
   justify-content: center;
+}
+
+#email {
+  color: var(--color-text);
+}
+
+#email:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 a {
