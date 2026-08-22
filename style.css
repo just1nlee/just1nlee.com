@@ -24,6 +24,15 @@ body {
   max-width: 700px;
   margin: 0 auto;
   padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
 }
 
 nav,
@@ -41,6 +50,11 @@ header h1 {
 header div {
   display: flex;
   gap: 0.75rem;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
 }
 
 a {
