@@ -1,6 +1,11 @@
 // const email_element = document.querySelector("#email");
 // email_element.addEventListener("click", (event) => {});
 
+// =========================================================================
+// ANIMATIONS
+// =========================================================================
+let timerId;
+
 async function loadFrames(animation) {
   let path = `./sprite_sheet/monke_${animation}/monke_${animation}_sprite_sheet.json`;
   let response = await fetch(path);
@@ -26,15 +31,23 @@ function displayFrame(frames, index) {
   element.style.backgroundPosition = `${x}px ${y}px`;
 }
 
-function runAnimation(frames) {
+function runAnimation(frames, currentFrame, loop) {
   let numberOfFrames = frames.length;
-  let currentFrame = 0;
-
-  for (let i = 0; i < numberOfFrames; i++) {
-    console.log(`printing frame ${i}`);
-    setTimeout(displayFrame, 100 + 100 * i, frames, i);
+  if (loop && currentFrame % numberOfFrames == 0) {
+    currentFrame = 0;
   }
+  displayFrame(frames, currentFrame);
+  timerId = setTimeout(runAnimation, 100, frames, currentFrame + 1, loop);
 }
+
+async function animationController() {
+  // IDLE
+  let idle_frames = await loadFrames("idle");
+  changeSpriteSheet("idle");
+  runAnimation(idle_frames, 0, false);
+}
+
+animationController();
 
 async function emoteAnimation() {
   let frames = await loadFrames("emote");
@@ -45,12 +58,8 @@ async function emoteAnimation() {
     }
   });
 }
-
-changeSpriteSheet("emote");
-emoteAnimation();
-
-//let frames = await loadFrames("idle");
-//runAnimation(frames);
+// changeSpriteSheet("emote");
+// emoteAnimation();
 
 // function copyEmail() {
 //   const element = document.querySelector("#email");
