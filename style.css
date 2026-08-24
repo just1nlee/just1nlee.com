@@ -1,10 +1,17 @@
 :root {
-  --color-bg: #101010;
+  --color-bg: #161616;
   --color-text: #ffffff;
-  --color-secondary-text: #b5b5b5;
+  --color-secondary-text: #aaaaaa;
+  --color-tertiary-text: #5c5c64;
 }
 
-nav ul,
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
 footer ul {
   display: flex;
   gap: 1.5rem;
@@ -21,9 +28,18 @@ body {
   font-weight: 400;
   font-style: normal;
 
-  max-width: 650px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
 }
 
 nav,
@@ -41,6 +57,20 @@ header h1 {
 header div {
   display: flex;
   gap: 0.75rem;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+}
+
+#email {
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+#email:hover {
+  text-decoration: underline;
 }
 
 a {
@@ -63,4 +93,5 @@ a:hover {
   transform: scale(2.5);
   background-image: url("./sprite_sheet/monke_idle/monke_idle_sprite_sheet.png");
   background-position: 0 0;
+  cursor: pointer;
 }
