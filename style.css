@@ -70,11 +70,11 @@ footer {
 
 #email {
   color: var(--color-text);
+  cursor: pointer;
 }
 
 #email:hover {
   text-decoration: underline;
-  cursor: pointer;
 }
 
 a {
@@ -97,4 +97,5 @@ a:hover {
   transform: scale(2.5);
   background-image: url("./sprite_sheet/monke_idle/monke_idle_sprite_sheet.png");
   background-position: 0 0;
+  cursor: pointer;
 }
