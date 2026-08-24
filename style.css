@@ -12,10 +12,6 @@ nav ul {
   padding: 0;
 }
 
-#name {
-  flex-grow: 1;
-}
-
 footer ul {
   display: flex;
   gap: 1.5rem;
