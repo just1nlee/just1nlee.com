@@ -59,6 +59,10 @@ header div {
   gap: 0.75rem;
 }
 
+header p {
+  line-height: 1.5;
+}
+
 footer {
   display: flex;
   justify-content: center;
