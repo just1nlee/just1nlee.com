@@ -1,5 +1,16 @@
+// =========================================================================
+// EMAIL COPY
+// =========================================================================
 // const email_element = document.querySelector("#email");
 // email_element.addEventListener("click", (event) => {});
+
+// function copyEmail() {
+//   const element = document.querySelector("#email");
+//   element.addEventListener("click", (event) => {
+//     console.log("Email button clicked!");
+//   });
+// }
+// copyEmail();
 
 // =========================================================================
 // ANIMATIONS
@@ -32,39 +43,40 @@ function displayFrame(frames, index) {
 }
 
 function runAnimation(frames, currentFrame, loop) {
-  let numberOfFrames = frames.length;
-  if (loop && currentFrame % numberOfFrames == 0) {
-    currentFrame = 0;
-  }
-  displayFrame(frames, currentFrame);
-  timerId = setTimeout(runAnimation, 100, frames, currentFrame + 1, loop);
+  return new Promise((resolve) => {
+    function step(currentFrame) {
+      const numberOfFrames = frames.length;
+      if (currentFrame === numberOfFrames) {
+        if (loop) {
+          currentFrame = 0;
+        } else {
+          resolve();
+          return;
+        }
+      }
+      displayFrame(frames, currentFrame);
+      timerId = setTimeout(step, 100, currentFrame + 1);
+    }
+    step(currentFrame);
+  });
 }
 
 async function animationController() {
   // IDLE
   let idle_frames = await loadFrames("idle");
   changeSpriteSheet("idle");
-  runAnimation(idle_frames, 0, false);
+  runAnimation(idle_frames, 0, true);
+
+  // EMOTE
+  let element = document.querySelector(".monke");
+  element.addEventListener("click", async (event) => {
+    let emote_frames = await loadFrames("emote");
+    changeSpriteSheet("emote");
+    clearTimeout(timerId);
+    await runAnimation(emote_frames, 0, false);
+    changeSpriteSheet("idle");
+    runAnimation(idle_frames, 0, true);
+  });
 }
 
 animationController();
-
-async function emoteAnimation() {
-  let frames = await loadFrames("emote");
-  let monke = document.querySelector(".monke");
-  monke.addEventListener("click", (event) => {
-    for (let i = 0; i < frames.length; i++) {
-      setTimeout(displayFrame, 100 + 100 * i, frames, i);
-    }
-  });
-}
-// changeSpriteSheet("emote");
-// emoteAnimation();
-
-// function copyEmail() {
-//   const element = document.querySelector("#email");
-//   element.addEventListener("click", (event) => {
-//     console.log("Email button clicked!");
-//   });
-// }
-// copyEmail();
