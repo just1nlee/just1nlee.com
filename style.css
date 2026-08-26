@@ -12,6 +12,27 @@ nav ul {
   padding: 0;
 }
 
+.language-button-container {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+
+.language-button {
+  color: var(--color-secondary-text);
+  font-family: "Geist", sans-serif;
+  font-size: inherit;
+  font-weight: 400;
+  font-style: normal;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.language-button:active {
+}
+
 footer ul {
   display: flex;
   gap: 1.5rem;
@@ -42,8 +63,11 @@ main {
   flex-basis: auto;
 }
 
+header {
+  margin-top: 2.5rem;
+}
+
 nav,
-header,
 footer {
   margin-top: 4rem;
 }
@@ -56,7 +80,7 @@ header h1 {
 
 header div {
   display: flex;
-  gap: 0.75rem;
+  gap: 3rem;
 }
 
 header p {
@@ -90,12 +114,11 @@ a:hover {
   text-decoration: underline;
 }
 
-.monke {
+.monkey {
   image-rendering: pixelated;
-  width: 24px;
-  height: 26px;
+  width: 36px;
+  height: 25px;
   transform: scale(2.5);
-  background-image: url("./sprite_sheet/monke_idle/monke_idle_sprite_sheet.png");
-  background-position: 0 0;
+  background-image: url("./sprite_sheet/monkey_sprite_sheet.png");
   cursor: pointer;
 }

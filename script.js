@@ -18,7 +18,7 @@
 let timerId;
 
 async function loadFrames(animation) {
-  let path = `./sprite_sheet/monke_${animation}/monke_${animation}_sprite_sheet.json`;
+  let path = `./sprite_sheet/monkey_${animation}/monkey_${animation}_sprite_sheet.json`;
   let response = await fetch(path);
 
   let status = response.status;
@@ -30,13 +30,13 @@ async function loadFrames(animation) {
 }
 
 function changeSpriteSheet(animation) {
-  let path = `./sprite_sheet/monke_${animation}/monke_${animation}_sprite_sheet.png`;
-  const element = document.querySelector(".monke");
+  let path = `./sprite_sheet/monkey_${animation}/monkey_${animation}_sprite_sheet.png`;
+  const element = document.querySelector(".monkey");
   element.style.backgroundImage = `url("${path}")`;
 }
 
 function displayFrame(frames, index) {
-  const element = document.querySelector(".monke");
+  const element = document.querySelector(".monkey");
   const x = -frames[index].frame.x;
   const y = -frames[index].frame.y;
   element.style.backgroundPosition = `${x}px ${y}px`;
@@ -68,7 +68,7 @@ async function animationController() {
   runAnimation(idle_frames, 0, true);
 
   // EMOTE
-  let element = document.querySelector(".monke");
+  let element = document.querySelector(".monkey");
   element.addEventListener("click", async (event) => {
     let emote_frames = await loadFrames("emote");
     changeSpriteSheet("emote");
@@ -78,5 +78,3 @@ async function animationController() {
     runAnimation(idle_frames, 0, true);
   });
 }
-
-animationController();
