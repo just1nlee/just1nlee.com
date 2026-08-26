@@ -1,4 +1,38 @@
 // =========================================================================
+// LANGUAGE TOGGLE
+// =========================================================================
+const translations = {
+  en: {
+    heading: "Hi, I'm Justin",
+  },
+  kr: {
+    heading: "안녕하세요, 저는 이진일입니다",
+  },
+};
+
+function setLanguage(lang) {
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const key = element.dataset.i18n;
+    element.textContent = translations[lang][key];
+  });
+}
+
+function changeLanguage() {
+  const element = document.querySelector(".language-button");
+  element.addEventListener("click", () => {
+    if (element.textContent === "EN") {
+      setLanguage("kr");
+      element.textContent = "한국어";
+    } else {
+      setLanguage("en");
+      element.textContent = "EN";
+    }
+  });
+}
+
+changeLanguage();
+
+// =========================================================================
 // EMAIL COPY
 // =========================================================================
 // const email_element = document.querySelector("#email");
@@ -69,7 +103,7 @@ async function animationController() {
 
   // EMOTE
   let element = document.querySelector(".monkey");
-  element.addEventListener("click", async (event) => {
+  element.addEventListener("click", async () => {
     let emote_frames = await loadFrames("emote");
     changeSpriteSheet("emote");
     clearTimeout(timerId);
