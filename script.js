@@ -1,11 +1,21 @@
 // =========================================================================
 // LANGUAGE TOGGLE
 // =========================================================================
+let currentLang = "en";
+
 const translations = {
   en: {
+    navLanguageButton: "EN",
+    navEmail: "Email",
+    navLinkedin: "LinkedIn",
+    navGithub: "GitHub",
     heading: "Hi, I'm Justin",
   },
   kr: {
+    navLanguageButton: "한국어",
+    navEmail: "이메일",
+    navLinkedin: "링크드인",
+    navGithub: "깃허브",
     heading: "안녕하세요, 저는 이진일입니다",
   },
 };
@@ -20,13 +30,8 @@ function setLanguage(lang) {
 function changeLanguage() {
   const element = document.querySelector(".language-button");
   element.addEventListener("click", () => {
-    if (element.textContent === "EN") {
-      setLanguage("kr");
-      element.textContent = "한국어";
-    } else {
-      setLanguage("en");
-      element.textContent = "EN";
-    }
+    currentLang = currentLang === "en" ? "kr" : "en";
+    setLanguage(currentLang);
   });
 }
 
