@@ -41,10 +41,17 @@ changeLanguage();
 // EMAIL COPY
 // =========================================================================
 const emailElement = document.querySelector("#email");
+const emailPopoverElement = document.querySelector("#email-popover");
+let popoverTimerId;
 
 function copyEmail() {
-  emailElement.addEventListener("click", (event) => {
-    navigator.clipboard.writeText("leejustincs@gmail.com");
+  emailElement.addEventListener("click", async (event) => {
+    await navigator.clipboard.writeText("leejustincs@gmail.com");
+    emailPopoverElement.classList.add("visible");
+    clearTimeout(popoverTimerId);
+    popoverTimeid = setTimeout(() => {
+      emailPopoverElement.classList.remove("visible");
+    }, 1600);
   });
 }
 
