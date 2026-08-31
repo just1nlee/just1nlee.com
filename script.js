@@ -62,6 +62,7 @@ copyEmail();
 // =========================================================================
 let beenClicked = false;
 let animationTimerId;
+let isEmoting = false;
 let posTimerId;
 let posX = 0;
 let monkeyElement = document.querySelector(".monkey");
@@ -133,12 +134,19 @@ async function animationController() {
       shiftMonkeyPosition();
       return;
     }
+    if (isEmoting) {
+      return;
+    }
+    isEmoting = true;
+
     let emote_frames = await loadFrames("emote");
     changeSpriteSheet("emote");
     clearTimeout(animationTimerId);
     await runAnimation(emote_frames, 0, false);
     changeSpriteSheet("idle");
     runAnimation(idle_frames, 0, true);
+
+    isEmoting = false;
   });
 }
 
