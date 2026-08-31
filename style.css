@@ -27,6 +27,64 @@ nav ul {
   cursor: pointer;
 }
 
+#email-container {
+  position: relative;
+}
+
+#email-popover {
+  position: absolute;
+  position-anchor: --email-anchor;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+
+  border: 2px outset buttonborder;
+  padding: 1px 6px;
+  color: var(--color-secondary-text);
+  font: inherit;
+  font-size: 0.875rem;
+  background: none;
+  cursor: default;
+}
+
+#email-popover.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#email {
+  anchor-name: --email-anchor;
+  color: var(--color-text);
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+#email:hover {
+  text-decoration: underline;
+}
+
+a,
+#email {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--color-text);
+}
+
+a:hover,
+#email:hover {
+  text-decoration: underline;
+}
+
 footer ul {
   display: flex;
   gap: 1.5rem;
@@ -86,56 +144,6 @@ header p {
 footer {
   display: flex;
   justify-content: center;
-}
-
-#email-container {
-  position: relative;
-}
-
-#email-popover {
-  position: absolute;
-  position-anchor: --email-anchor;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 0.5rem;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-}
-
-#email-popover.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-#email {
-  anchor-name: --email-anchor;
-  color: var(--color-text);
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-}
-
-#email:hover {
-  text-decoration: underline;
-}
-
-a,
-#email {
-  color: var(--color-text);
-  text-decoration: none;
-}
-
-a:visited {
-  color: var(--color-text);
-}
-
-a:hover,
-#email:hover {
-  text-decoration: underline;
 }
 
 .monkey-space {
