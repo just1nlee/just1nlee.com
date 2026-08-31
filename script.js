@@ -54,31 +54,32 @@ changeLanguage();
 // =========================================================================
 // ANIMATIONS
 // =========================================================================
-let timerId;
+let beenClicked = false;
+let animationTimerId;
+let posTimerId;
+let posX = 0;
+let monkeyElement = document.querySelector(".monkey");
+let monkeySpaceElement = document.querySelector(".monkey-space");
+const spriteWidth = monkeyElement.getBoundingClientRect().width;
+const containerWidth = monkeySpaceElement.clientWidth;
 
 async function loadFrames(animation) {
   let path = `./sprite_sheet/monkey_${animation}/monkey_${animation}_sprite_sheet.json`;
   let response = await fetch(path);
-
-  let status = response.status;
   let data = await response.json();
-  console.log(status);
-  console.log(data);
 
   return data.frames;
 }
 
 function changeSpriteSheet(animation) {
   let path = `./sprite_sheet/monkey_${animation}/monkey_${animation}_sprite_sheet.png`;
-  const element = document.querySelector(".monkey");
-  element.style.backgroundImage = `url("${path}")`;
+  monkeyElement.style.backgroundImage = `url("${path}")`;
 }
 
 function displayFrame(frames, index) {
-  const element = document.querySelector(".monkey");
   const x = -frames[index].frame.x;
   const y = -frames[index].frame.y;
-  element.style.backgroundPosition = `${x}px ${y}px`;
+  monkeyElement.style.backgroundPosition = `${x}px ${y}px`;
 }
 
 function runAnimation(frames, currentFrame, loop) {
@@ -94,10 +95,19 @@ function runAnimation(frames, currentFrame, loop) {
         }
       }
       displayFrame(frames, currentFrame);
-      timerId = setTimeout(step, 100, currentFrame + 1);
+      animationTimerId = setTimeout(step, 100, currentFrame + 1);
     }
     step(currentFrame);
   });
+}
+
+function shiftMonkeyPosition() {
+  posX += 1;
+  if (posX > containerWidth) {
+    posX = -spriteWidth;
+  }
+  monkeyElement.style.transform = `translateX(${posX}px) scale(2.5)`;
+  posTimerId = setTimeout(shiftMonkeyPosition, 20);
 }
 
 async function animationController() {
@@ -107,13 +117,15 @@ async function animationController() {
   runAnimation(idle_frames, 0, true);
 
   // EMOTE
-  let element = document.querySelector(".monkey");
-  element.addEventListener("click", async () => {
+  monkeyElement.addEventListener("click", async () => {
     let emote_frames = await loadFrames("emote");
     changeSpriteSheet("emote");
-    clearTimeout(timerId);
+    clearTimeout(animationTimerId);
     await runAnimation(emote_frames, 0, false);
     changeSpriteSheet("idle");
     runAnimation(idle_frames, 0, true);
   });
 }
+
+animationController();
+shiftMonkeyPosition();
