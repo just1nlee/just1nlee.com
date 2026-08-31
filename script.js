@@ -122,6 +122,11 @@ async function animationController() {
 
   // EMOTE
   monkeyElement.addEventListener("click", async () => {
+    if (!beenClicked) {
+      beenClicked = true;
+      shiftMonkeyPosition();
+      return;
+    }
     let emote_frames = await loadFrames("emote");
     changeSpriteSheet("emote");
     clearTimeout(animationTimerId);
@@ -132,4 +137,3 @@ async function animationController() {
 }
 
 animationController();
-shiftMonkeyPosition();
