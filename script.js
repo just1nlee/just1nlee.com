@@ -73,7 +73,11 @@ async function loadFrames(animation) {
 
 function changeSpriteSheet(animation) {
   let path = `./sprite_sheet/monkey_${animation}/monkey_${animation}_sprite_sheet.png`;
-  monkeyElement.style.backgroundImage = `url("${path}")`;
+  const img = new Image();
+  img.src = path;
+  return img.decode().then(() => {
+    monkeyElement.style.backgroundImage = `url("${path}")`;
+  });
 }
 
 function displayFrame(frames, index) {
