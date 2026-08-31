@@ -40,16 +40,15 @@ changeLanguage();
 // =========================================================================
 // EMAIL COPY
 // =========================================================================
-// const email_element = document.querySelector("#email");
-// email_element.addEventListener("click", (event) => {});
+const emailElement = document.querySelector("#email");
 
-// function copyEmail() {
-//   const element = document.querySelector("#email");
-//   element.addEventListener("click", (event) => {
-//     console.log("Email button clicked!");
-//   });
-// }
-// copyEmail();
+function copyEmail() {
+  emailElement.addEventListener("click", (event) => {
+    navigator.clipboard.writeText("leejustincs@gmail.com");
+  });
+}
+
+copyEmail();
 
 // =========================================================================
 // ANIMATIONS
