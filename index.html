@@ -18,77 +18,90 @@
     <script type="module" src="script.js" defer></script>
   </head>
   <body>
-    <nav>
-      <!-- 
+    <div class="page">
+      <nav>
+        <!-- 
       <a href="/" class="nav-name">Justin Lee</a></li>
       -->
-      <ul class="nav-links">
-        <li class="language-button-container">
-          <button data-i18n="navLanguageButton" class="language-button">
-            EN
-          </button>
-        </li>
-        <li id="email-container">
-          <button data-i18n="navEmail" id="email">Email</button>
-          <div id="email-popover">COPIED</div>
-        </li>
-        <li>
-          <a
-            data-i18n="navLinkedin"
-            href="https://www.linkedin.com/in/just1nlee/"
-            target="_blank"
-            rel="noopener noreferrer"
-            >LinkedIn</a
-          >
-        </li>
-        <li>
-          <a
-            data-i18n="navGithub"
-            href="https://github.com/just1nlee/"
-            target="_blank"
-            rel="noopener noreferrer"
-            >GitHub</a
-          >
-        </li>
-      </ul>
-    </nav>
-    <header>
-      <div>
-        <div class="monkey-space">
-          <div class="monkey"></div>
+        <ul class="nav-links">
+          <li class="language-button-container">
+            <button data-i18n="navLanguageButton" class="language-button">
+              EN
+            </button>
+          </li>
+          <li id="email-container">
+            <button data-i18n="navEmail" id="email">Email</button>
+            <div id="email-popover">COPIED</div>
+          </li>
+          <li>
+            <a
+              data-i18n="navLinkedin"
+              href="https://www.linkedin.com/in/just1nlee/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >LinkedIn</a
+            >
+          </li>
+          <li>
+            <a
+              data-i18n="navGithub"
+              href="https://github.com/just1nlee/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <header>
+        <div>
+          <div class="monkey-space">
+            <div class="monkey"></div>
+          </div>
+          <h1 data-i18n="heading">Hi, I'm Justin</h1>
         </div>
-        <h1 data-i18n="heading">Hi, I'm Justin</h1>
-      </div>
+        <p>
+          I am an undergraduate Computer Science student at Oregon State
+          University with a focus in Artificial Intelligence. I build systems
+          and infrastructure, and I'm currently working on my own terminal
+          multiplexer,
+          <a
+            id="terminalscale-link"
+            href="https://github.com/just1nlee/terminalscale"
+            target="_blank"
+            rel="noopener noreferrer"
+            >terminalscale</a
+          >.
+        </p>
+      </header>
+      <main>
+        <details>
+          <summary>MORE</summary>
+          <p>
+            I am Korean American, born and raised in Portland, Oregon. I first
+            fell in love with computers
+          </p>
+          <p>
+            Hi, I'm Justin. I'm an incoming fourth-year Computer Science student
+            at Oregon State University with a love for all things computers. I'm
+            interested in systems and cloud infrastructure, and I have
+            real-world experience building on AWS in Go. When I'm not
+            programming, I'm building LEGO, reading manga, or playing bass.
+          </p>
+        </details>
+      </main>
+    </div>
+    <footer>
       <p>
-        I am an undergraduate Computer Science student at Oregon State
-        University with a focus in Artificial Intelligence. I build systems and
-        infrastructure, and I'm currently working on my own terminal
-        multiplexer,
+        monkey sprite based on original art by
         <a
-          id="terminalscale-link"
-          href="https://github.com/just1nlee/terminalscale"
+          id="apple-jelly-link"
+          href="https://www.reddit.com/r/PixelArt/comments/lrusgr/monkey/"
           target="_blank"
           rel="noopener noreferrer"
-          >terminalscale</a
-        >.
+          >Apple Jelly</a
+        >
       </p>
-    </header>
-    <main>
-      <details>
-        <summary>MORE</summary>
-        <p>
-          I am Korean American and was born and raised in Portland, Oregon. I am
-          currently studying computer science at Oregon State University.
-        </p>
-        <p>
-          Hi, I'm Justin. I'm an incoming fourth-year Computer Science student
-          at Oregon State University with a love for all things computers. I'm
-          interested in systems and cloud infrastructure, and I have real-world
-          experience building on AWS in Go. When I'm not programming, I'm
-          building LEGO, reading manga, or playing bass.
-        </p>
-      </details>
-    </main>
-    <footer></footer>
+    </footer>
   </body>
 </html>

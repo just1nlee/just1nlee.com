@@ -97,16 +97,12 @@ body {
   max-width: 600px;
   margin: 0 auto;
   padding: 0 1rem;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
 header {
 }
 
-nav,
-footer {
+nav {
   margin-top: 4rem;
 }
 
@@ -182,9 +178,16 @@ details p {
   line-height: 1.5;
 }
 
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 footer {
   display: flex;
   justify-content: center;
+  font-size: 0.85rem;
 }
 
 footer ul {
@@ -192,4 +195,13 @@ footer ul {
   gap: 1.5rem;
   list-style: none;
   padding: 0;
+}
+
+#apple-jelly-link {
+  color: var(--color-secondary-text);
+  text-decoration: underline;
+}
+
+#apple-jelly-link:hover {
+  color: var(--color-tertiary-text);
 }
