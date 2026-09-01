@@ -1,70 +1,153 @@
-// const email_element = document.querySelector("#email");
-// email_element.addEventListener("click", (event) => {});
+// =========================================================================
+// LANGUAGE TOGGLE
+// =========================================================================
+let currentLang = "en";
+
+const translations = {
+  en: {
+    navLanguageButton: "EN",
+    navEmail: "Email",
+    navLinkedin: "LinkedIn",
+    navGithub: "GitHub",
+    heading: "Hi, I'm Justin",
+  },
+  kr: {
+    navLanguageButton: "한국어",
+    navEmail: "이메일",
+    navLinkedin: "링크드인",
+    navGithub: "깃허브",
+    heading: "안녕하세요, 저는 이진일입니다",
+  },
+};
+
+function setLanguage(lang) {
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const key = element.dataset.i18n;
+    element.textContent = translations[lang][key];
+  });
+}
+
+function changeLanguage() {
+  const element = document.querySelector(".language-button");
+  element.addEventListener("click", () => {
+    currentLang = currentLang === "en" ? "kr" : "en";
+    setLanguage(currentLang);
+  });
+}
+
+changeLanguage();
+
+// =========================================================================
+// EMAIL COPY
+// =========================================================================
+const emailElement = document.querySelector("#email");
+const emailPopoverElement = document.querySelector("#email-popover");
+let popoverTimerId;
+
+function copyEmail() {
+  emailElement.addEventListener("click", async (event) => {
+    await navigator.clipboard.writeText("leejustincs@gmail.com");
+    emailPopoverElement.classList.add("visible");
+    clearTimeout(popoverTimerId);
+    popoverTimeid = setTimeout(() => {
+      emailPopoverElement.classList.remove("visible");
+    }, 1600);
+  });
+}
+
+copyEmail();
 
 // =========================================================================
 // ANIMATIONS
 // =========================================================================
-let timerId;
+let beenClicked = false;
+let animationTimerId;
+let isEmoting = false;
+let posTimerId;
+let posX = 0;
+let monkeyElement = document.querySelector(".monkey");
+let monkeySpaceElement = document.querySelector(".monkey-space");
+const spriteWidth = monkeyElement.getBoundingClientRect().width;
+const containerWidth = monkeySpaceElement.clientWidth;
 
 async function loadFrames(animation) {
-  let path = `./sprite_sheet/monke_${animation}/monke_${animation}_sprite_sheet.json`;
+  let path = `./sprite_sheet/monkey_${animation}/monkey_${animation}_sprite_sheet.json`;
   let response = await fetch(path);
-
-  let status = response.status;
   let data = await response.json();
-  console.log(status);
-  console.log(data);
 
   return data.frames;
 }
 
 function changeSpriteSheet(animation) {
-  let path = `./sprite_sheet/monke_${animation}/monke_${animation}_sprite_sheet.png`;
-  const element = document.querySelector(".monke");
-  element.style.backgroundImage = `url("${path}")`;
+  let path = `./sprite_sheet/monkey_${animation}/monkey_${animation}_sprite_sheet.png`;
+  const img = new Image();
+  img.src = path;
+  return img.decode().then(() => {
+    monkeyElement.style.backgroundImage = `url("${path}")`;
+  });
 }
 
 function displayFrame(frames, index) {
-  const element = document.querySelector(".monke");
   const x = -frames[index].frame.x;
   const y = -frames[index].frame.y;
-  element.style.backgroundPosition = `${x}px ${y}px`;
+  monkeyElement.style.backgroundPosition = `${x}px ${y}px`;
 }
 
 function runAnimation(frames, currentFrame, loop) {
-  let numberOfFrames = frames.length;
-  if (loop && currentFrame % numberOfFrames == 0) {
-    currentFrame = 0;
+  return new Promise((resolve) => {
+    function step(currentFrame) {
+      const numberOfFrames = frames.length;
+      if (currentFrame === numberOfFrames) {
+        if (loop) {
+          currentFrame = 0;
+        } else {
+          resolve();
+          return;
+        }
+      }
+      displayFrame(frames, currentFrame);
+      animationTimerId = setTimeout(step, 100, currentFrame + 1);
+    }
+    step(currentFrame);
+  });
+}
+
+function shiftMonkeyPosition() {
+  posX += 1;
+  if (posX > containerWidth) {
+    posX = -spriteWidth;
   }
-  displayFrame(frames, currentFrame);
-  timerId = setTimeout(runAnimation, 100, frames, currentFrame + 1, loop);
+  monkeyElement.style.transform = `translateX(${posX}px) scale(2.5)`;
+  posTimerId = setTimeout(shiftMonkeyPosition, 20);
 }
 
 async function animationController() {
   // IDLE
   let idle_frames = await loadFrames("idle");
   changeSpriteSheet("idle");
-  runAnimation(idle_frames, 0, false);
+  runAnimation(idle_frames, 0, true);
+
+  // EMOTE
+  monkeyElement.addEventListener("click", async () => {
+    if (!beenClicked) {
+      beenClicked = true;
+      shiftMonkeyPosition();
+      return;
+    }
+    if (isEmoting) {
+      return;
+    }
+    isEmoting = true;
+
+    let emote_frames = await loadFrames("emote");
+    changeSpriteSheet("emote");
+    clearTimeout(animationTimerId);
+    await runAnimation(emote_frames, 0, false);
+    changeSpriteSheet("idle");
+    runAnimation(idle_frames, 0, true);
+
+    isEmoting = false;
+  });
 }
 
 animationController();
-
-async function emoteAnimation() {
-  let frames = await loadFrames("emote");
-  let monke = document.querySelector(".monke");
-  monke.addEventListener("click", (event) => {
-    for (let i = 0; i < frames.length; i++) {
-      setTimeout(displayFrame, 100 + 100 * i, frames, i);
-    }
-  });
-}
-// changeSpriteSheet("emote");
-// emoteAnimation();
-
-// function copyEmail() {
-//   const element = document.querySelector("#email");
-//   element.addEventListener("click", (event) => {
-//     console.log("Email button clicked!");
-//   });
-// }
-// copyEmail();

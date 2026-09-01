@@ -12,11 +12,77 @@ nav ul {
   padding: 0;
 }
 
-footer ul {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
+.language-button-container {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+
+.language-button {
+  color: var(--color-secondary-text);
+  font-family: "Geist", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background: none;
+  cursor: pointer;
+}
+
+#email-container {
+  position: relative;
+}
+
+#email-popover {
+  position: absolute;
+  position-anchor: --email-anchor;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+
+  border: 2px outset buttonborder;
+  padding: 1px 6px;
+  color: var(--color-secondary-text);
+  font: inherit;
+  font-size: 0.875rem;
+  background: none;
+  cursor: default;
+}
+
+#email-popover.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#email {
+  anchor-name: --email-anchor;
+  color: var(--color-text);
+  background: none;
+  border: none;
   padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+#email:hover {
+  text-decoration: underline;
+}
+
+a,
+#email {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--color-text);
+}
+
+a:hover,
+#email:hover {
+  text-decoration: underline;
 }
 
 body {
@@ -31,20 +97,12 @@ body {
   max-width: 600px;
   margin: 0 auto;
   padding: 0 1rem;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
-main {
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: auto;
+header {
 }
 
-nav,
-header,
-footer {
+nav {
   margin-top: 4rem;
 }
 
@@ -52,46 +110,101 @@ header h1 {
   color: var(--color-text);
   font-size: 1.5rem;
   font-weight: 500;
+  margin-bottom: 0;
 }
 
 header div {
   display: flex;
-  gap: 0.75rem;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+header p {
+  line-height: 1.5;
+  margin-top: 1rem;
+}
+
+#terminalscale-link {
+  color: var(--color-secondary-text);
+  text-decoration: underline;
+}
+
+#terminalscale-link:hover {
+  color: var(--color-tertiary-text);
+}
+
+.monkey-space {
+  flex-grow: 1;
+  position: relative;
+  /* background-color: red; */
+  height: 92px;
+  overflow: hidden;
+}
+
+.monkey {
+  image-rendering: pixelated;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 37px;
+  transform: scale(2.5);
+  transform-origin: top left;
+  background-image: url("./sprite_sheet/monkey_idle/monkey_idle_sprite_sheet.png");
+  cursor: pointer;
+}
+
+main {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+
+summary {
+  user-select: none;
+  border: 2px outset buttonborder;
+  padding: 1px 6px;
+  color: var(--color-secondary-text);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  width: fit-content;
+}
+
+details p {
+  margin-top: 2rem;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 footer {
+  margin-top: 0rem;
   display: flex;
   justify-content: center;
-}
-
-#email {
   color: var(--color-text);
-  cursor: pointer;
+  font-size: 0.85rem;
 }
 
-#email:hover {
+footer ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+#apple-jelly-link {
+  color: var(--color-text);
   text-decoration: underline;
 }
 
-a {
-  color: var(--color-text);
-  text-decoration: none;
-}
-
-a:visited {
-  color: var(--color-text);
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.monke {
-  image-rendering: pixelated;
-  width: 24px;
-  height: 26px;
-  transform: scale(2.5);
-  background-image: url("./sprite_sheet/monke_idle/monke_idle_sprite_sheet.png");
-  background-position: 0 0;
-  cursor: pointer;
+#apple-jelly-link:hover {
+  color: var(--color-tertiary-text);
 }

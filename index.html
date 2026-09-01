@@ -18,59 +18,106 @@
     <script type="module" src="script.js" defer></script>
   </head>
   <body>
-    <nav>
-      <!-- 
+    <div class="page">
+      <nav>
+        <!-- 
       <a href="/" class="nav-name">Justin Lee</a></li>
       -->
-
-      <ul class="nav-links">
-        <li id="email">Email</li>
-        <li>
+        <ul class="nav-links">
+          <li class="language-button-container">
+            <button data-i18n="navLanguageButton" class="language-button">
+              EN
+            </button>
+          </li>
+          <li id="email-container">
+            <button data-i18n="navEmail" id="email">Email</button>
+            <div id="email-popover">COPIED</div>
+          </li>
+          <li>
+            <a
+              data-i18n="navLinkedin"
+              href="https://www.linkedin.com/in/just1nlee/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >LinkedIn</a
+            >
+          </li>
+          <li>
+            <a
+              data-i18n="navGithub"
+              href="https://github.com/just1nlee/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <header>
+        <div>
+          <div class="monkey-space">
+            <div class="monkey"></div>
+          </div>
+          <h1 data-i18n="heading">Hi, I'm Justin</h1>
+        </div>
+        <p>
+          I am an undergraduate Computer Science student at Oregon State
+          University with a focus in Artificial Intelligence. I build systems
+          and infrastructure, and I'm currently working on my own terminal
+          multiplexer called
           <a
-            href="https://www.linkedin.com/in/just1nlee/"
+            id="terminalscale-link"
+            href="https://github.com/just1nlee/terminalscale"
             target="_blank"
             rel="noopener noreferrer"
-            >LinkedIn</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://github.com/just1nlee/"
-            target="_blank"
-            rel="noopener noreferrer"
-            >GitHub</a
-          >
-        </li>
-      </ul>
-    </nav>
-    <header>
-      <div>
-        <h1>Hi, I'm Justin</h1>
-        <div class="monke"></div>
-      </div>
+            >terminalscale</a
+          >.
+        </p>
+      </header>
+      <main>
+        <details>
+          <summary>MORE</summary>
+          <p>
+            I am Korean American, born and raised in Portland, Oregon. I have
+            built systems for state government and open source, and I am
+            currently doing research on automated failure attribution for LLM
+            multi-agent systems.
+          </p>
+          <p>
+            I can't point to the exact moment that I fell in love with
+            computers, but they've always been there for me. As a child, I put
+            countless hours into video games like Pokémon, Tetris, and
+            Minecraft, which served as my introduction to the world of ones and
+            zeroes. I built my first computer in middle school, then spent a
+            year of part-time checks on my first Apple silicon, an M1 MacBook
+            Air that I still use as my daily driver. I later got a T480s to
+            experiment with different Linux distributions, which got me fixated
+            on developer tools like Vim, tiling window managers, and terminal
+            multiplexers.
+          </p>
+          <p>
+            Outside of computers, I go hiking, build LEGO, and read manga.
+            Places like the coast and the Columbia River Gorge make me proud to
+            call Oregon home. My LEGO collection is mostly Star Wars, with my
+            favorite set being the UCS Jango Fett's Slave I. One day, I hope to
+            add Rivendell to the collection. My top 3 manga currently look like
+            One Piece, Slam Dunk, and Mobile Suit Gundam: The Origin (in no
+            particular order). If you've made it this far, thanks for reading.
+          </p>
+        </details>
+      </main>
+    </div>
+    <footer>
       <p>
-        I am an undergraduate Computer Science student at Oregon State
-        University with a focus in Artificial Intelligence. I design and build
-        systems and infrastructure, and I also like to go hiking, build LEGO,
-        and play the bass.
+        Monkey sprite based on original art by
+        <a
+          id="apple-jelly-link"
+          href="https://www.reddit.com/r/PixelArt/comments/lrusgr/monkey/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >apple jelly</a
+        >
       </p>
-    </header>
-    <main>
-      <details>
-        <summary>About me</summary>
-        <p>
-          I am Korean American and was born and raised in Portland, Oregon. I am
-          currently studying computer science at Oregon State University.
-        </p>
-        <p>
-          Hi, I'm Justin. I'm an incoming fourth-year Computer Science student
-          at Oregon State University with a love for all things computers. I'm
-          interested in systems and cloud infrastructure, and I have real-world
-          experience building on AWS in Go. When I'm not programming, I'm
-          building LEGO, reading manga, or playing bass.
-        </p>
-      </details>
-    </main>
-    <footer></footer>
+    </footer>
   </body>
 </html>
