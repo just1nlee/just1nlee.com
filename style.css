@@ -128,6 +128,15 @@ header p {
   margin-top: 1rem;
 }
 
+#terminalscale-link {
+  color: var(--color-secondary-text);
+  text-decoration: underline;
+}
+
+#terminalscale-link:hover {
+  color: var(--color-tertiary-text);
+}
+
 .monkey-space {
   flex-grow: 1;
   position: relative;
