@@ -156,6 +156,7 @@ header p {
 
 main {
   margin-top: 1rem;
+  margin-bottom: 2rem;
   flex-grow: 1;
   flex-shrink: 0;
   flex-basis: auto;
@@ -185,8 +186,10 @@ details p {
 }
 
 footer {
+  margin-top: 0rem;
   display: flex;
   justify-content: center;
+  color: var(--color-text);
   font-size: 0.85rem;
 }
 
@@ -198,7 +201,7 @@ footer ul {
 }
 
 #apple-jelly-link {
-  color: var(--color-secondary-text);
+  color: var(--color-text);
   text-decoration: underline;
 }
 
