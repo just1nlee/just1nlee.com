@@ -157,6 +157,7 @@ main {
 }
 
 summary {
+  user-select: none;
   border: 2px outset buttonborder;
   padding: 1px 6px;
   color: var(--color-secondary-text);
@@ -164,6 +165,12 @@ summary {
   font-size: 0.875rem;
   cursor: pointer;
   width: fit-content;
+}
+
+details p {
+  margin-top: 2rem;
+  margin-bottom: 0;
+  line-height: 1.5;
 }
 
 footer {
