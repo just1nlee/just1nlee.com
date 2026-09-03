@@ -18,6 +18,10 @@ nav ul {
   flex-basis: auto;
 }
 
+.nav-links .left-item {
+  color: var(--color-text);
+}
+
 .language-button {
   color: var(--color-secondary-text);
   font-family: "Geist", sans-serif;
@@ -58,7 +62,7 @@ nav ul {
 
 #email {
   anchor-name: --email-anchor;
-  color: var(--color-text);
+  color: var(--color-secondary-text);
   background: none;
   border: none;
   padding: 0;
@@ -72,7 +76,7 @@ nav ul {
 
 a,
 #email {
-  color: var(--color-text);
+  color: var(--color-secondary-text);
   text-decoration: none;
 }
 
@@ -125,7 +129,7 @@ header p {
 }
 
 #terminalscale-link {
-  color: var(--color-secondary-text);
+  color: var(--color-text);
   text-decoration: underline;
 }
 
