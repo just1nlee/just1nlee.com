@@ -5,17 +5,17 @@ let currentLang = "en";
 
 const translations = {
   en: {
-    navLanguageButton: "EN",
+    navLanguageButton: "한국어",
     navEmail: "Email",
     navLinkedin: "LinkedIn",
     navGithub: "GitHub",
     heading: "Hi, I'm Justin",
     introParagraphFirstPart:
-      "I am an undergraduate Computer Science student at Oregon State University with a focus in Artificial Intelligence. I build systems and infrastructure, and I'm working on my own terminal multiplexer called ",
+      "I am an undergraduate Computer Science student at Oregon State University with a focus in Artificial Intelligence. I build systems, harnesses, and infrastructure, and I'm working on my own terminal multiplexer called ",
     introParagraphSecondPart: ".",
     detailsSummaryButton: "MORE",
     mainFirstParagraph:
-      "I am Korean American, born and raised in Portland, Oregon. I have built systems for state government and open source, and I am currently doing research on automated failure attribution for LLM multi-agent systems.",
+      "I am Korean American, born and raised in Portland, Oregon. I have engineered systems for state government and open source, and I am currently doing research on automated failure attribution for LLM multi-agent systems.",
     mainSecondParagraph:
       "I can't point to the exact moment that I fell in love with computers, but they've always been there for me. As a child, I put countless hours into video games like Pokémon, Tetris, and Minecraft. These games served as my introduction to the world of ones and zeroes. I built my first PC in middle school, then spent a year of part-time checks on my first Apple silicon, an M1 MacBook Air that I still use as my daily driver. I later got a T480s to experiment with different Linux distributions, which got me fixated on developer tools like Vim, tiling window managers, and terminal multiplexers.",
     mainThirdParagraph:
@@ -24,17 +24,17 @@ const translations = {
     footerCreditsSecondPart: "",
   },
   ko: {
-    navLanguageButton: "한국어",
+    navLanguageButton: "EN",
     navEmail: "이메일",
     navLinkedin: "링크드인",
     navGithub: "깃허브",
     heading: "안녕하세요, 저는 이진일입니다",
     introParagraphFirstPart:
-      "저는 인공지능을 중점적으로 공부하는 오리건 주립대학교 컴퓨터공학과 학부생입니다. 시스템과 인프라를 구축하고, 개인 프로젝트로 터미널 멀티플렉서 ",
+      "저는 인공지능을 중점적으로 공부하는 오리건 주립대학교 컴퓨터공학과 학부생입니다. 시스템, 하네스, 인프라를 구축하고, 개인 프로젝트로 터미널 멀티플렉서 ",
     introParagraphSecondPart: "을 만들고 있습니다.",
     detailsSummaryButton: "더보기",
     mainFirstParagraph:
-      "저는 오리건주 포틀랜드에서 태어나고 자란 한국계 미국인입니다. 주 정부와 오픈소스 프로젝트를 위한 시스템을 만들어 왔고, 지금은 LLM 멀티 에이전트 시스템의 자동 실패 원인 규명에 대해 연구하고 있습니다.",
+      "저는 오리건주 포틀랜드에서 태어나고 자란 한국계 미국인입니다. 주 정부와 오픈소스 프로젝트를 위한 시스템을 개발해 왔고, 지금은 LLM 멀티 에이전트 시스템의 자동 실패 원인 규명에 대해 연구하고 있습니다.",
     mainSecondParagraph:
       "컴퓨터를 좋아하게 된 정확한 순간은 짚어낼 수 없지만, 컴퓨터는 언제나 제 곁에 있었습니다. 어릴 적에는 포켓몬, 테트리스, 마인크래프트 같은 비디오 게임에 수없이 많은 시간을 쏟았습니다. 그 게임들이 0과 1의 세계로 들어서는 계기가 되었습니다. 중학생 때 첫 PC를 조립했고, 이후 아르바이트로 1년 동안 모은 돈으로 첫 애플 실리콘인 M1 맥북 에어를 샀는데, 지금도 주력 기기로 쓰고 있습니다. 나중에는 여러 리눅스 배포판을 시험해 보려고 T480s를 들였고, 그러면서 Vim, 타일링 윈도우 매니저, 터미널 멀티플렉서 같은 개발 도구에 푹 빠지게 되었습니다.",
     mainThirdParagraph:
