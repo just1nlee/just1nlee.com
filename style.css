@@ -3,6 +3,8 @@
   --color-text: #ffffff;
   --color-secondary-text: #aaaaaa;
   --color-tertiary-text: #5c5c64;
+  /* Overridden by script.js so that scale * devicePixelRatio is a whole number */
+  --monkey-scale: 2.5;
 }
 
 nav ul {
@@ -137,7 +139,7 @@ header p {
   flex-grow: 1;
   position: relative;
   /* background-color: red; */
-  height: 92px;
+  height: calc(37px * var(--monkey-scale));
   overflow: hidden;
 }
 
@@ -148,7 +150,7 @@ header p {
   left: 0;
   width: 48px;
   height: 37px;
-  transform: scale(2.5);
+  transform: scale(var(--monkey-scale));
   transform-origin: top left;
   background-image: url("./sprite_sheet/monkey_idle/monkey_idle_sprite_sheet.png");
   cursor: pointer;
