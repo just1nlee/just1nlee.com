@@ -93,15 +93,45 @@ let posX = 0;
 let monkeyElement = document.querySelector(".monkey");
 let monkeySpaceElement = document.querySelector(".monkey-space");
 
-// Pick the largest scale <= 2.5 where scale * devicePixelRatio is a whole
-// number, so every sprite pixel maps to a whole number of physical pixels.
-// DPR 2 (Retina) -> 2.5, DPR 1 -> 2, DPR 1.5 -> 2, DPR 1.25 -> 2.4
-const dpr = window.devicePixelRatio || 1;
-const monkeyScale = Math.floor(2.5 * dpr) / dpr;
-document.documentElement.style.setProperty("--monkey-scale", monkeyScale);
+const SPRITE_WIDTH = 48;
+const MAX_SCALE = 2.5;
+let monkeyScale;
+let spriteWidth;
+let containerWidth;
+let dprQuery;
 
-const spriteWidth = monkeyElement.getBoundingClientRect().width;
-const containerWidth = monkeySpaceElement.clientWidth;
+// Pick the largest scale <= MAX_SCALE where scale * devicePixelRatio is a
+// whole number, so every sprite pixel maps to a whole number of physical
+// pixels. DPR 2 (Retina) -> 2.5, DPR 1 -> 2, DPR 1.5 -> 2, DPR 1.25 -> 2.4
+function updateMonkeyScale() {
+  const dpr = window.devicePixelRatio || 1;
+  monkeyScale = Math.floor(MAX_SCALE * dpr) / dpr;
+  document.documentElement.style.setProperty("--monkey-scale", monkeyScale);
+
+  // Computed from the scale instead of measured, so it never lags behind
+  spriteWidth = SPRITE_WIDTH * monkeyScale;
+  containerWidth = monkeySpaceElement.clientWidth;
+}
+
+// A resize event does not always fire when the window is dragged to a
+// screen with a different pixel density, so watch the DPR directly.
+// The query matches only the current DPR, so it is re-created after each
+// change to detect the next one.
+function watchPixelRatio() {
+  dprQuery = window.matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`);
+  dprQuery.addEventListener(
+    "change",
+    () => {
+      updateMonkeyScale();
+      watchPixelRatio();
+    },
+    { once: true },
+  );
+}
+
+updateMonkeyScale();
+watchPixelRatio();
+window.addEventListener("resize", updateMonkeyScale);
 
 async function loadFrames(animation) {
   let path = `./sprite_sheet/monkey_${animation}/monkey_${animation}_sprite_sheet.json`;
