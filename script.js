@@ -92,6 +92,14 @@ let posTimerId;
 let posX = 0;
 let monkeyElement = document.querySelector(".monkey");
 let monkeySpaceElement = document.querySelector(".monkey-space");
+
+// Pick the largest scale <= 2.5 where scale * devicePixelRatio is a whole
+// number, so every sprite pixel maps to a whole number of physical pixels.
+// DPR 2 (Retina) -> 2.5, DPR 1 -> 2, DPR 1.5 -> 2, DPR 1.25 -> 2.4
+const dpr = window.devicePixelRatio || 1;
+const monkeyScale = Math.floor(2.5 * dpr) / dpr;
+document.documentElement.style.setProperty("--monkey-scale", monkeyScale);
+
 const spriteWidth = monkeyElement.getBoundingClientRect().width;
 const containerWidth = monkeySpaceElement.clientWidth;
 
@@ -142,7 +150,7 @@ function shiftMonkeyPosition() {
   if (posX > containerWidth) {
     posX = -spriteWidth;
   }
-  monkeyElement.style.transform = `translateX(${posX}px) scale(2.5)`;
+  monkeyElement.style.transform = `translateX(${posX}px) scale(${monkeyScale})`;
   posTimerId = setTimeout(shiftMonkeyPosition, 20);
 }
 
